@@ -1,0 +1,473 @@
+{
+  "models": {
+    "City": {
+      "table": "cities",
+      "columns": {
+        "name": {
+          "type": "STRING"
+        }
+      }
+    },
+    "User": {
+      "table": "users",
+      "columns": {
+        "first_name": {
+          "type": "STRING",
+          "length": 55,
+          "validate": {
+            "len": [3, 55]
+          }
+        },
+        "user_name": {
+          "type": "STRING",
+          "length": 55,
+          "validate": {
+            "len": [3, 55]
+          },
+          "unique": true
+        },
+        "last_name": {
+          "type": "STRING",
+          "length": 55,
+          "validate": {
+            "len": [3, 55]
+          }
+        },
+        "password": {
+          "type": "STRING",
+          "length": 55,
+          "validate": {
+            "len": [8, 55]
+          }
+        },
+        "birthday": {
+          "type": "INTEGER",
+          "iosType": "Date",
+          "validate": {
+            "isInt": true
+          }
+        }
+      }
+    },
+    "Like": {
+      "table": "likes",
+      "columns": {
+        "post_id": {
+          "type": "INTEGER"
+        },
+        "user_id": {
+          "type": "INTEGER"
+        }
+      },
+      "indexes": [
+        {
+          "unique": true,
+          "fields": ["post_id", "user_id"]
+        }
+      ]
+    },
+    "Post": {
+      "table": "posts",
+      "columns": {
+        "text": {
+          "type": "TEXT",
+          "validate": {
+            "len": [3]
+          }
+        },
+        "created_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        },
+        "updated_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        }
+      }
+    },
+    "DataPost": {
+      "table": "post_datas",
+      "columns": {
+        "type": {
+          "type": "INTEGER"
+        },
+        "url": {
+          "type": "STRING"
+        }
+      }
+    },
+    "Conversation": {
+      "table": "conversations",
+      "columns": {
+        "name": {
+          "type": "TEXT"
+        },
+        "created_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        },
+        "updated_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        }
+      }
+    },
+    "Message": {
+      "table": "messages",
+      "columns": {
+        "text": {
+          "type": "TEXT"
+        },
+        "created_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        },
+        "updated_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        }
+      }
+    },
+    "DataMessage": {
+      "table": "message_datas",
+      "columns": {
+        "type": {
+          "type": "INTEGER"
+        },
+        "url": {
+          "type": "STRING"
+        },
+        "updated_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        }
+      }
+    },
+    "Comment": {
+      "table": "comments",
+      "columns": {
+        "text": {
+          "type": "STRING"
+        },
+        "created_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        },
+        "updated_at": {
+          "type": "INTEGER",
+          "iosType": "Date"
+        }
+      }
+    },
+    "DataComment": {
+      "table": "comment_datas",
+      "columns": {
+        "type": {
+          "type": "INTEGER"
+        },
+        "url": {
+          "type": "STRING"
+        }
+      }
+    }
+  },
+  "relationships": {
+    "hasOne": [],
+    "hasMany": [
+      {
+        "ownerClassName" : "User",
+        "ownedClassName" : "Conversation",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "User",
+        "ownedClassName" : "Post",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Post",
+        "ownedClassName" : "Comment",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Post",
+        "ownedClassName" : "Like",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Post",
+        "ownedClassName" : "DataPost",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "City",
+        "ownedClassName" : "User",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "User",
+        "ownedClassName" : "Like",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "User",
+        "ownedClassName" : "Comment",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "User",
+        "ownedClassName" : "Message",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Message",
+        "ownedClassName" : "DataMessage",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Comment",
+        "ownedClassName" : "DataComment",
+        "onDeleteOwnerConstraint": "cascade"
+      },
+      {
+        "ownerClassName" : "Conversation",
+        "ownedClassName" : "Message",
+        "onDeleteOwnerConstraint": "cascade"
+      }
+    ],
+    "belongsToMany": [
+      {
+        "ownerClassName" : "Conversation",
+        "ownedClassName" : "User"
+      }
+    ]
+  },
+  "modelsCrudMethods": {
+    "City": {
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "User": {
+      "POST": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "City": "object"
+        }
+      },
+      "PUT": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "City": "object"
+        }
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "City": "object"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "Post": {
+      "POST": {
+        "requestNestedModels": {
+          "DataPost": "array"
+        },
+        "responseNestedModels": {
+          "DataPost": "array",
+          "User": "object"
+        }
+      },
+      "PUT": {
+        "requestNestedModels": {
+          "DataPost": "array"
+        },
+        "responseNestedModels": {
+          "DataPost": "array",
+          "User": "object"
+        }
+      },
+      "GET": {
+        "requestNestedModels": [],
+        "responseNestedModels": {
+          "DataPost": "array",
+          "User": "object"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "Comment": {
+      "POST": {
+        "requestNestedModels": {
+          "DataComment": "array"
+        },
+        "responseNestedModels": {
+          "Post": "object",
+          "User": "object",
+          "DataComment": "array"
+        }
+      },
+      "PUT": {
+        "requestNestedModels": {
+          "DataComment": "array"
+        },
+        "responseNestedModels": {
+          "Post": "object",
+          "User": "object",
+          "DataComment": "array"
+        }
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "Post": "object",
+          "User": "object",
+          "DataComment": "array"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "Like": {
+      "POST": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "Post": "object",
+          "User": "object"
+        }
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "Post": "object",
+          "User": "object"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "Conversation": {
+      "POST": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      },
+      "PUT": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "User": "object"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    },
+    "Message": {
+      "POST": {
+        "requestNestedModels": {
+          "DataMessage": "array"
+        },
+        "responseNestedModels": {
+          "Conversation": "object",
+          "User": "object",
+          "DataMessage": "array"
+        }
+      },
+      "PUT": {
+        "requestNestedModels": {
+          "DataMessage": "array"
+        },
+        "responseNestedModels": {
+          "Conversation": "object",
+          "User": "object",
+          "DataMessage": "array"
+        }
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {
+          "Conversation": "object",
+          "User": "object",
+          "DataMessage": "array"
+        }
+      },
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    }
+  },
+  "onlyServerFields": {
+    "User": ["password"]
+  },
+  "uniqIdsPairs": {
+    "Like": ["post_id", "user_id"]
+  },
+  "tablesColumnsFakerType": {
+    "cities": {
+      "name": "Faker.Address.city()"
+    },
+    "users": {
+      "user_name": "Faker.Name.findName()",
+      "first_name": "Faker.Name.firstName()",
+      "last_name": "Faker.Name.lastName()",
+      "birthday": "randomTimestamp()",
+      "password": "randomString(8)"
+    },
+    "posts": {
+      "text": "Faker.Lorem.paragraph()"
+    },
+    "conversations": {
+      "name": "Faker.Lorem.sentences()"
+    },
+    "messages": {
+      "text": "Faker.Lorem.paragraph()"
+    },
+    "likes": {
+
+    },
+    "comments": {
+      "text": "Faker.Lorem.paragraph()"
+    },
+    "post_datas": {
+      "type": "Faker.Helpers.randomNumber(4)",
+      "url": "Faker.random.avatar_uri()"
+    },
+    "message_datas": {
+      "type": "Faker.Helpers.randomNumber(4)",
+      "url": "Faker.random.avatar_uri()"
+    },
+    "comment_datas": {
+      "type": "Faker.Helpers.randomNumber(4)",
+      "url": "Faker.random.avatar_uri()"
+    }
+  },
+  "updateModelsAllowedAttrs": {
+    "User": ["user_name", "first_name", "last_name", "birthday", "city_id"],
+    "Like": ["text"],
+    "Conversation": ["name"],
+    "Message": ["text", "message_datas"],
+    "Comment": ["text", "comment_datas"],
+    "Post": ["text", "post_datas"]
+  },
+  "serverConfig": {
+
+  },
+  "appName": "ProjectsGenerator"
+}

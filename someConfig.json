@@ -1,0 +1,23 @@
+{
+  "appName": "myApp",
+  "models": {
+    "Model": {
+      "table": "models",
+      "columns": {
+        "age": {
+          "type": "STRING",
+          "length": 255
+        }
+      }
+    }
+  },
+  "serverConfig": {
+    "host": "localhost",
+    "port": "8080",
+    "protocol": "http"
+  },
+  "iosConfig": {
+    "appName": "iMyApp",
+    "appPrefix": "I"
+  }
+}

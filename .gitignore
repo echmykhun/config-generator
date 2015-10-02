@@ -1,0 +1,6 @@
+.idea/
+.vagrant/
+cookbooks/
+node_modules/*
+!node_modules/generator-projectConfigGenerator/
+Vagrantfile

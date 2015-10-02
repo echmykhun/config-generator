@@ -1,23 +1,52 @@
 {
-  "appName": "myApp",
+  "appName": "application",
   "models": {
-    "Model": {
-      "table": "models",
-      "columns": {
-        "age": {
-          "type": "STRING",
-          "length": 255
+    "model1": {
+      "table": "model1s",
+      "columns": {}
+    },
+    "model2": {
+      "table": "model2s",
+      "columns": {}
+    }
+  },
+  "relationships": {
+    "hasOne": [
+      {
+        "ownerClassName": "model1",
+        "ownedClassName": "model2"
+      }
+    ],
+    "hasMany": [
+      {
+        "ownerClassName": "model2",
+        "ownedClassName": "model1"
+      }
+    ],
+    "belongsToMany": []
+  },
+  "modelsCrudMethods": {
+    "model1": {
+      "POST": {
+        "requestNestedModels": {
+          "model2": "object"
+        },
+        "responseNestedModels": {
+          "model2": "object"
         }
       }
     }
   },
+  "onlyServerFields": {},
+  "tablesColumnsFakerType": {},
+  "updateModelsAllowedAttrs": {},
   "serverConfig": {
     "host": "localhost",
     "port": "8080",
     "protocol": "http"
   },
   "iosConfig": {
-    "appName": "iMyApp",
-    "appPrefix": "I"
+    "appName": "",
+    "appPrefix": ""
   }
 }

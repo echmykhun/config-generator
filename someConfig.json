@@ -1,23 +1,18 @@
 {
-  "appName": "myApp",
+  "appName": "my-app",
   "models": {
-    "Model": {
-      "table": "models",
-      "columns": {
-        "age": {
-          "type": "STRING",
-          "length": 255
-        }
-      }
+    "model1": {
+      "table": "model1s",
+      "columns": {}
+    },
+    "model2": {
+      "table": "model2s",
+      "columns": {}
     }
   },
-  "serverConfig": {
-    "host": "localhost",
-    "port": "8080",
-    "protocol": "http"
-  },
-  "iosConfig": {
-    "appName": "iMyApp",
-    "appPrefix": "I"
+  "relationships": {
+    "hasOne": [],
+    "hasMany": [],
+    "belongsToMany": []
   }
 }

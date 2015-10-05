@@ -1,5 +1,5 @@
 {
-  "appName": "application",
+  "appName": "my-app",
   "models": {
     "model1": {
       "table": "model1s",
@@ -11,42 +11,8 @@
     }
   },
   "relationships": {
-    "hasOne": [
-      {
-        "ownerClassName": "model1",
-        "ownedClassName": "model2"
-      }
-    ],
-    "hasMany": [
-      {
-        "ownerClassName": "model2",
-        "ownedClassName": "model1"
-      }
-    ],
+    "hasOne": [],
+    "hasMany": [],
     "belongsToMany": []
-  },
-  "modelsCrudMethods": {
-    "model1": {
-      "POST": {
-        "requestNestedModels": {
-          "model2": "object"
-        },
-        "responseNestedModels": {
-          "model2": "object"
-        }
-      }
-    }
-  },
-  "onlyServerFields": {},
-  "tablesColumnsFakerType": {},
-  "updateModelsAllowedAttrs": {},
-  "serverConfig": {
-    "host": "localhost",
-    "port": "8080",
-    "protocol": "http"
-  },
-  "iosConfig": {
-    "appName": "",
-    "appPrefix": ""
   }
 }

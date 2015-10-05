@@ -1,12 +1,8 @@
 {
-  "appName": "my-app",
+  "appName": "GeneratedProject",
   "models": {
-    "model1": {
-      "table": "model1s",
-      "columns": {}
-    },
-    "model2": {
-      "table": "model2s",
+    "Model": {
+      "table": "models",
       "columns": {}
     }
   },
@@ -14,5 +10,33 @@
     "hasOne": [],
     "hasMany": [],
     "belongsToMany": []
+  },
+  "modelsCrudMethods": {
+    "Model": {
+      "DELETE": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      },
+      "GET": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      },
+      "POST": {
+        "requestNestedModels": {},
+        "responseNestedModels": {}
+      }
+    }
+  },
+  "onlyServerFields": {},
+  "tablesColumnsFakerType": {},
+  "updateModelsAllowedAttrs": {},
+  "serverConfig": {
+    "host": "localhost",
+    "port": "8080",
+    "protocol": "http"
+  },
+  "iosConfig": {
+    "appName": "GeneratedProject",
+    "appPrefix": "GTP"
   }
 }

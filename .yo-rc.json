@@ -1,5 +1,5 @@
 {
   "generator-projectConfigGenerator": {
-    "configFileName": "myConfig.json"
+    "configFileName": ".json"
   }
 }

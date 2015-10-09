@@ -1,16 +1,17 @@
 {
   "appName": "GeneratedProject",
   "models": {
-    "Mpodel": {
-      "table": "mpodels",
+    "Model": {
+      "table": "models",
       "columns": {
-        "col1": {
+        "col": {
           "type": "STRING",
           "length": 255,
-          "unique": false
-        },
-        "col2": {
-          "type": "INTEGER",
+          "validate": {
+            "len": [
+              5
+            ]
+          },
           "unique": false
         }
       }
@@ -22,21 +23,5 @@
     "belongsToMany": []
   },
   "modelsCrudMethods": {},
-  "onlyServerFields": {},
-  "tablesColumnsFakerType": {
-    "mpodels": {
-      "col1": "randomString(10)",
-      "col2": "Faker.Helpers.randomNumber(10)"
-    }
-  },
-  "updateModelsAllowedAttrs": {},
-  "serverConfig": {
-    "host": "localhost",
-    "port": "8080",
-    "protocol": "http"
-  },
-  "iosConfig": {
-    "appName": "GeneratedProject",
-    "appPrefix": "GTP"
-  }
+  "onlyServerFields": {}
 }

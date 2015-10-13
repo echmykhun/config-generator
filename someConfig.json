@@ -1,16 +1,18 @@
 {
   "appName": "GeneratedProject",
   "models": {
-    "Mpodel": {
-      "table": "mpodels",
+    "Model": {
+      "table": "models",
       "columns": {
-        "col1": {
+        "col": {
           "type": "STRING",
           "length": 255,
-          "unique": false
-        },
-        "col2": {
-          "type": "INTEGER",
+          "validate": {
+            "len": [
+              10,
+              55
+            ]
+          },
           "unique": false
         }
       }
@@ -24,9 +26,8 @@
   "modelsCrudMethods": {},
   "onlyServerFields": {},
   "tablesColumnsFakerType": {
-    "mpodels": {
-      "col1": "randomString(10)",
-      "col2": "Faker.Helpers.randomNumber(10)"
+    "models": {
+      "col": "randomString(10)"
     }
   },
   "updateModelsAllowedAttrs": {},

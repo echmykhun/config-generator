@@ -9,7 +9,8 @@
           "length": 255,
           "validate": {
             "len": [
-              5
+              10,
+              55
             ]
           },
           "unique": false
@@ -23,5 +24,20 @@
     "belongsToMany": []
   },
   "modelsCrudMethods": {},
-  "onlyServerFields": {}
+  "onlyServerFields": {},
+  "tablesColumnsFakerType": {
+    "models": {
+      "col": "randomString(10)"
+    }
+  },
+  "updateModelsAllowedAttrs": {},
+  "serverConfig": {
+    "host": "localhost",
+    "port": "8080",
+    "protocol": "http"
+  },
+  "iosConfig": {
+    "appName": "GeneratedProject",
+    "appPrefix": "GTP"
+  }
 }
